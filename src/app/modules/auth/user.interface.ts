@@ -4,7 +4,7 @@ interface IUser {
   image?: string
   phone: string
   password: string
-  role: 'user'
+  role: 'admin' | 'moderator' | 'user'
   isBlocked: boolean
   isDeleted: boolean
 }

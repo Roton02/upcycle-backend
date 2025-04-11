@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { model, Schema } from 'mongoose'
-import IUser from './user.interface'
 import bcrypt from 'bcrypt'
+import { model, Schema } from 'mongoose'
 import config from '../../config'
+import IUser from './user.interface'
 
 const userSchema = new Schema<IUser>(
   {
@@ -27,6 +27,8 @@ const userSchema = new Schema<IUser>(
     },
     role: {
       type: String,
+      enum: ['admin', 'moderator', 'user'],
+      default: 'user',
     },
     isBlocked: {
       type: Boolean,
