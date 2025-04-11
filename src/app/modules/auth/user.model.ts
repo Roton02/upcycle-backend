@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { model, Schema } from 'mongoose'
-import IUser from './user.interface'
 import bcrypt from 'bcrypt'
+import { model, Schema } from 'mongoose'
 import config from '../../config'
+import IUser from './user.interface'
 
 const userSchema = new Schema<IUser>(
   {
     username: {
       type: String,
       required: [true, 'Name is required'],
-      unique : true
+      unique: true,
     },
     email: {
       type: String,
@@ -28,8 +28,8 @@ const userSchema = new Schema<IUser>(
     },
     role: {
       type: String,
-      enum: ['landlord', 'tenant'], //admin, landlord, tenant
-      default: 'tenant',
+      enum: ['admin', 'moderator', 'user'],
+      default: 'user',
     },
     isBlocked: {
       type: Boolean,
