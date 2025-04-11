@@ -5,7 +5,7 @@ const userValidationSchema = z.object({
   email: z.string().email('Invalid email address'),
   phone: z.string().min(1, 'Phone is required'),
   password: z.string().min(5, 'Password must be at least 6 characters'),
-  role: z.enum(['landlord', 'tenant']).default('tenant'),
+  role: z.enum(['admin', 'user', 'moderator']).default('user'),
   isBlocked: z.boolean().default(false),
   isDeleted: z.boolean().default(false),
 })
