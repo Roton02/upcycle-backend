@@ -9,9 +9,8 @@ const auth = (...requiredRole: string[]) => {
   // console.log('auth middleware triggered ')
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     // console.log('auth middleware inside ')
-    const extractedToken = req.headers.authorization
-    const token = (extractedToken as string).split(' ')[1]
-
+    const token = req.cookies.token
+    // console.log(token)
     if (!token) {
       throw new AppError(400, 'You are not authorized to access')
     }
@@ -22,7 +21,7 @@ const auth = (...requiredRole: string[]) => {
     const userData = await user.findOne({ email: email })
     // check user already exit
     if (!userData) {
-      throw new AppError(404, 'User is not found')
+      throw new AppError(404, 'User is not found ')
     }
 
     // check if the user is blocked
