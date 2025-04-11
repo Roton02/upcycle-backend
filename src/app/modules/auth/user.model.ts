@@ -9,7 +9,7 @@ const userSchema = new Schema<IUser>(
     username: {
       type: String,
       required: [true, 'Name is required'],
-      unique : true
+      unique: true,
     },
     email: {
       type: String,
@@ -19,7 +19,6 @@ const userSchema = new Schema<IUser>(
     phone: {
       type: String,
       required: [true, 'Phone is required'],
-      unique: true,
     },
     password: {
       type: String,
@@ -28,8 +27,6 @@ const userSchema = new Schema<IUser>(
     },
     role: {
       type: String,
-      enum: ['landlord', 'tenant'], //admin, landlord, tenant
-      default: 'tenant',
     },
     isBlocked: {
       type: Boolean,
