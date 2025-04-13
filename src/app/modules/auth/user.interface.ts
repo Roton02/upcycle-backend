@@ -1,9 +1,10 @@
 interface IUser {
   username: string
   email: string
+  image?: string
   phone: string
   password: string
-  role: 'landlord' | 'tenant'
+  role: 'admin' | 'moderator' | 'user'
   isBlocked: boolean
   isDeleted: boolean
 }
