@@ -6,7 +6,7 @@ Fetches all product listings from the database with support for filters, full-te
 
 ---
 
-## ✅ Query Parameters
+## ✅ Query Parameters 
 
 | Name         | Type      | Description                                                     |
 | ------------ | --------- | --------------------------------------------------------------- |
@@ -29,7 +29,7 @@ Fetches all product listings from the database with support for filters, full-te
 
 ---
 
-## 🔍 Searchable Fields
+## 🔍 Searchable Fields 
 
 Search is case-insensitive and works on the following fields:
 
