@@ -1,35 +1,31 @@
-import { Schema, model } from 'mongoose'
+import { model, Schema, Types } from 'mongoose'
 import { ITransaction } from './transactions.interface'
 
 const transactionSchema = new Schema<ITransaction>(
   {
     buyerID: {
       type: Schema.Types.ObjectId,
+      required: [true, 'Buyer ID is required'],
       ref: 'user',
-      required: true,
     },
-    sellerID: {
-      type: Schema.Types.ObjectId,
-      ref: 'user',
-      required: true,
-    },
-    itemID: {
-      type: Schema.Types.ObjectId,
-      ref: 'Listing',
-      required: true,
-    },
+    items: [
+      {
+        itemId: {
+          type: Types.ObjectId,
+          required: [true, 'Item ID is required'],
+          ref: 'Listing',
+        },
+      },
+    ],
     status: {
       type: String,
       enum: ['pending', 'completed', 'cancelled'],
       default: 'pending',
     },
-    price: {
+    totalPrice: {
       type: Number,
-      required: true,
-    },
-    transactionDate: {
-      type: Date,
-      default: Date.now,
+      required: [true, 'Total price is required'],
+      min: [0, 'Total price must be a non-negative number'],
     },
   },
   {
@@ -37,5 +33,6 @@ const transactionSchema = new Schema<ITransaction>(
   }
 )
 
-const Transaction = model<ITransaction>('Transaction', transactionSchema)
-export default Transaction
+const TransactionModel = model<ITransaction>('Transaction', transactionSchema)
+
+export default TransactionModel
