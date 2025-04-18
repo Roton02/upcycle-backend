@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { userControlloer } from './user.controller'
 import zodValidator from '../../middleware/validator'
+import { userControlloer } from './user.controller'
 import { authValidation } from './user.validation'
 // import auth from '../../middleware/auth'
 
