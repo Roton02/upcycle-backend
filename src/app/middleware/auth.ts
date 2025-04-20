@@ -9,7 +9,7 @@ const auth = (...requiredRole: string[]) => {
   // console.log('auth middleware triggered ')
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     // console.log('auth middleware inside ')
-    const token = req.cookies.token
+    const token = req.cookies.token || req.headers.authorization
     // console.log(token)
     if (!token) {
       throw new AppError(400, 'You are not authorized to access')
