@@ -49,8 +49,8 @@ const createTransaction = catchAsync(async (req: Request, res: Response) => {
   }
 
   const sslcz = new SslCommerzPayment(
-    config.STORE_ID,
-    config.STORE_PASS,
+    config.STORE_ID!,
+    config.STORE_PASS!,
     is_live
   )
 
