@@ -8,6 +8,11 @@ const transactionSchema = new Schema<ITransaction>(
       required: [true, 'Buyer ID is required'],
       ref: 'user',
     },
+    sellerID: {
+      type: Schema.Types.ObjectId,
+      required: [true, 'Buyer ID is required'],
+      ref: 'user',
+    },
     items: [
       {
         itemId: {

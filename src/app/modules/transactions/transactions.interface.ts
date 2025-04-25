@@ -2,6 +2,7 @@ import { Types } from 'mongoose'
 
 export interface ITransaction {
   buyerID: Types.ObjectId
+  sellerID: Types.ObjectId
   items: {
     itemId: Types.ObjectId
   }[]

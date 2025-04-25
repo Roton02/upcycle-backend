@@ -28,44 +28,24 @@ const createTransaction = async (order: IOrderBody, buyerID: string) => {
   return { transactionId: _id }
 }
 
-// const getUserPurchases = async (userId: string) => {
-//   const purchases = await Transaction.find({ buyerID: userId })
-//     .populate('sellerID', 'username email')
-//     .populate('itemID', 'title price images')
-//     .sort({ transactionDate: -1 })
-//   return purchases
-// }
+const getUserPurchases = async (userId: string) => {
+  const purchases = await TransactionModel.find({ buyerID: userId })
+    .populate('sellerID', 'username email')
+    .populate('items.itemId', 'title price images')
+    .sort({ createdAt: -1 })
+  return purchases
+}
 
-// const getUserSales = async (userId: string) => {
-//   const sales = await Transaction.find({ sellerID: userId })
-//     .populate('buyerID', 'username email')
-//     .populate('itemID', 'title price images')
-//     .sort({ transactionDate: -1 })
-//   return sales
-// }
-
-// const updateTransactionStatus = async (id: string, status: string) => {
-//   const transaction = await Transaction.findById(id)
-//   if (!transaction) {
-//     throw new AppError(404, 'Transaction not found')
-//   }
-
-//   const result = await Transaction.findByIdAndUpdate(
-//     id,
-//     { status },
-//     { new: true }
-//   ).populate([
-//     { path: 'buyerID', select: 'username email' },
-//     { path: 'sellerID', select: 'username email' },
-//     { path: 'itemID', select: 'title price images' },
-//   ])
-
-//   return result
-// }
+const getUserSales = async (userId: string) => {
+  const sales = await TransactionModel.find({ sellerID: userId })
+    .populate('buyerID', 'username email')
+    .populate('items.itemId', 'title price images')
+    .sort({ createdAt: -1 })
+  return sales
+}
 
 export const TransactionService = {
   createTransaction,
-  // getUserPurchases,
-  // getUserSales,
-  // updateTransactionStatus,
+  getUserPurchases,
+  getUserSales,
 }

@@ -15,12 +15,7 @@ const ListingService = {
   },
 
   getAllFromDB: async (query: Record<string, unknown>) => {
-    const listingQuery = new QueryBuilder(
-      Listing.find().select(
-        'title description category price condition status userID brand'
-      ),
-      query
-    )
+    const listingQuery = new QueryBuilder(Listing.find(), query)
 
     const [data, meta] = await Promise.all([
       listingQuery
