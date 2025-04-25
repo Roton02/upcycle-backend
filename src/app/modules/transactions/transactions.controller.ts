@@ -101,46 +101,45 @@ export const sslPaymentSuccess = catchAsync(
   }
 )
 
-// const getUserPurchases = catchAsync(async (req: Request, res: Response) => {
-//   const userId = req.params.userId
-//   const result = await TransactionService.getUserPurchases(userId)
-//   sendResponse(res, {
-//     statusCode: 200,
-//     success: true,
-//     message: 'Purchase history retrieved successfully',
-//     data: result,
-//   })
-// })
+const getUserPurchases = catchAsync(async (req: Request, res: Response) => {
+  const requestedUserId = req.params.userId
+  const currentUserId = req.user?._id
 
-// const getUserSales = catchAsync(async (req: Request, res: Response) => {
-//   const userId = req.params.userId
-//   const result = await TransactionService.getUserSales(userId)
-//   sendResponse(res, {
-//     statusCode: 200,
-//     success: true,
-//     message: 'Sales history retrieved successfully',
-//     data: result,
-//   })
-// })
+  // Security check: Users can only view their own purchases
+  if (requestedUserId !== currentUserId) {
+    throw new AppError(403, 'You can only view your own purchase history')
+  }
 
-// const updateTransactionStatus = catchAsync(
-//   async (req: Request, res: Response) => {
-//     const { id } = req.params
-//     const { status } = req.body
-//     const result = await TransactionService.updateTransactionStatus(id, status)
-//     sendResponse(res, {
-//       statusCode: 200,
-//       success: true,
-//       message: 'Transaction status updated successfully',
-//       data: result,
-//     })
-//   }
-// )
+  const result = await TransactionService.getUserPurchases(currentUserId)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Purchase history retrieved successfully',
+    data: result,
+  })
+})
+
+const getUserSales = catchAsync(async (req: Request, res: Response) => {
+  const requestedUserId = req.params.userId
+  const currentUserId = req.user?._id
+
+  // Security check: Users can only view their own sales
+  if (requestedUserId !== currentUserId) {
+    throw new AppError(403, 'You can only view your own sales history')
+  }
+
+  const result = await TransactionService.getUserSales(currentUserId)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Sales history retrieved successfully',
+    data: result,
+  })
+})
 
 export const TransactionController = {
   createTransaction,
   sslPaymentSuccess,
-  // getUserPurchases,
-  // getUserSales,
-  // updateTransactionStatus,
+  getUserPurchases,
+  getUserSales,
 }

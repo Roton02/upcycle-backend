@@ -13,22 +13,19 @@ router.post(
   zodValidator(OrderSchema),
   TransactionController.createTransaction
 )
+
 router.post('/payment/success', TransactionController.sslPaymentSuccess)
 
-// router.get(
-//   '/purchases/:userId',
-//   auth(userRole.user),
-//   TransactionController.getUserPurchases
-// )
-// router.get(
-//   '/sales/:userId',
-//   auth(userRole.user),
-//   TransactionController.getUserSales
-// )
-// router.patch(
-//   '/:id',
-//   auth(userRole.user),
-//   TransactionController.updateTransactionStatus
-// )
+router.get(
+  '/purchases/:userId',
+  auth(userRole.user),
+  TransactionController.getUserPurchases
+)
+
+router.get(
+  '/sales/:userId',
+  auth(userRole.user),
+  TransactionController.getUserSales
+)
 
 export const TransactionRoutes = router

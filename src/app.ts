@@ -20,7 +20,7 @@ app.use(cookieParser())
 app.use('/api', router)
 
 app.use('/', (req: Request, res: Response) => {
-  res.send('Hello World!')
+  res.send('API not found !')
 })
 
 app.use(globalErrorHandler)
