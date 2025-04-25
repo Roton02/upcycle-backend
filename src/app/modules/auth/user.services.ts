@@ -123,7 +123,22 @@ const updateUserInfoIntoDB = async (
     new: true,
     runvalidate: true,
   })
-  return result
+  if (!result) {
+    throw new AppError(404, 'user not found')
+  }
+  const VerifiedUser = {
+    email: result.email,
+    role: result.role,
+    username: result.username,
+    phone: result.phone,
+    _id: result._id,
+  }
+
+  const secret = config.JWT_SECRET as string
+
+  const token = jwt.sign(VerifiedUser, secret, { expiresIn: '5h' })
+
+  return { result, token }
 }
 
 const updatePasswordIntoDB = async (

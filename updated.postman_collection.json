@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "e8ccbc85-d840-4d27-b0bc-c75e255f4c3d",
+		"name": "upcycle- backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39793006"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "valid Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uQGdtYWkuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDMzMzM3MTYsImV4cCI6MTc0MzMzNzMxNn0.-mvCfehMulE6LkKO1z_mE8Rk2E9PjVZPsv7qbAtu_3c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/validToken"
+					},
+					"response": []
+				},
+				{
+					"name": "create-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"roton2\",\r\n    \"email\": \"roton1@gmail.com\",\r\n    \"phone\": \"018923230232\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5000/api/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifire\" : \"roton@gmail.com\",\r\n    \"password\":\"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5000/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"roton@gmai.com\",\r\n    \"password\": \"roton\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5000/api/auth/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDZAZ21haS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDIyMjI3MDUsImV4cCI6MTc0MjIyNjMwNX0.V_UF4BVLptgBoGrtErxWSTR7ZHOjVRp6JmFlRNtBSSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5000/api/admin/users"
+					},
+					"response": []
+				},
+				{
+					"name": "delet user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDZAZ21haS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDIyMjI5MDMsImV4cCI6MTc0MjIyNjUwM30.Y4P4kPAUA6bTEcBaXb6f2_x9DXp9uxQbVQs6xttHqCQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/admin/users/67f8af458a3a5449fe9bcc7a"
+					},
+					"response": []
+				},
+				{
+					"name": "block user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDZAZ21haS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDIyMjI5MDMsImV4cCI6MTc0MjIyNjUwM30.Y4P4kPAUA6bTEcBaXb6f2_x9DXp9uxQbVQs6xttHqCQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/admin/users/67f8af458a3a5449fe9bcc7a"
+					},
+					"response": []
+				},
+				{
+					"name": "update-user-info",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDFAZ21haS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MjIyNTQwMiwiZXhwIjoxNzQyMjI5MDAyfQ.IonCcVV5IwPNZ4N8CI5RSxjHA6Xo4BS2YPRGEogwGTg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"hum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/user/67dff3d85108eea65dbd486f"
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDFAZ21haS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MjIyNTQwMiwiZXhwIjoxNzQyMjI5MDAyfQ.IonCcVV5IwPNZ4N8CI5RSxjHA6Xo4BS2YPRGEogwGTg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"123456\",\r\n    \"newPassword\":\"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/update-password/67f8afae8a3a5449fe9bcc85"
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDFAZ21haS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MjIyNTQwMiwiZXhwIjoxNzQyMjI5MDAyfQ.IonCcVV5IwPNZ4N8CI5RSxjHA6Xo4BS2YPRGEogwGTg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"rph645102@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://zinvera.vercel.app/api/forgot-password"
+					},
+					"response": []
+				},
+				{
+					"name": "resete-password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvdG9uMDFAZ21haS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MjIyNTQwMiwiZXhwIjoxNzQyMjI5MDAyfQ.IonCcVV5IwPNZ4N8CI5RSxjHA6Xo4BS2YPRGEogwGTg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"rotonh\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJwaDY0NTEwMkBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6InJvdG9uIiwiX2lkIjoiNjdmMzU2ZWFiZmQ3MDExOTczNzZmMTllIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDQwMDEyMzIsImV4cCI6MTc0NDAwNDgzMn0.pdj1yM1w2RUlA4Jb2PIAs0fsTSlr0dqvtOXzl8hNSyE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/reset-password/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "listing",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Samsung Galaxy S22 Ultra\",\r\n  \"description\": \"Almost new, used for only 2 months. No scratches or dents. Comes with original box and accessories.\",\r\n  \"category\": \"Electronics\",\r\n  \"brand\": \"Samsung\",\r\n  \"price\": 85000,\r\n  \"condition\": \"Used - Like New\",\r\n  \"images\": [\r\n    \"https://example.com/images/galaxy-s22-front.jpg\",\r\n    \"https://example.com/images/galaxy-s22-back.jpg\"\r\n  ],\r\n  \"status\": \"available\",\r\n  \"userID\": \"64fc7b2a8bcf0a1a9d2b1d31\",\r\n\r\n  \"model\": \"SM-S908B\",\r\n  \"negotiable\": true,\r\n  \"usageDuration\": \"2 months\",\r\n  \"warranty\": true,\r\n  \"warrantyDetails\": \"Manufacturer warranty valid until Dec 2025\",\r\n  \"purchaseDate\": \"2024-01-10T00:00:00.000Z\",\r\n  \"location\": \"Dhaka, Bangladesh\",\r\n  \"deliveryOptions\": [\"Pickup\", \"Courier\"],\r\n  \"tags\": [\"smartphone\", \"android\", \"used\"],\r\n  \"isFeatured\": true,\r\n  \"rating\": 4.8\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/listings"
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/listings/"
+					},
+					"response": []
+				},
+				{
+					"name": "singel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/listings/680b19fff6c16b80b5a4c7b5"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"roton-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/listings/680b19fff6c16b80b5a4c7b5"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5000/api/listings/680b19fff6c16b80b5a4c7b5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction n",
+			"item": [
+				{
+					"name": "crate transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"buyerID\": \"64fc8a7c1d9b2a12bc3a1c55\",\r\n  \"sellerID\": \"64fc7b2a8bcf0a1a9d2b1d31\",\r\n  \"items\": [\r\n    {\r\n      \"itemId\": \"68055fa720a1f6fe13d97f36\"\r\n    }\r\n  ],\r\n  \"status\": \"completed\",\r\n  \"totalPrice\": 160000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/transactions"
+					},
+					"response": []
+				},
+				{
+					"name": "purchase history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://upcycle-delta.vercel.app/api/transactions/purchases/67f8afae8a3a5449fe9bcc85"
+					},
+					"response": []
+				},
+				{
+					"name": "sales-history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/transactions/sales/67f8afae8a3a5449fe9bcc85"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
